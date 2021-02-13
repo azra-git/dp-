@@ -1,0 +1,33 @@
+class File:
+    def _init_(self, Data):
+        self.Data = Data
+
+    def SaveCourseInfile(self):
+        pass
+
+    def SaveCourseInDB(self):
+        pass
+
+
+class _Object(File):
+    def _init_(self, Data, objects):
+        super()._init_(Data)
+        self.objects = objects
+
+    def SaveCourseInfile(self):
+        self.Data.carry_commercial(self.objects)
+
+    def SaveCourseInDB(self, new_objects):
+        self.objects += new_objects
+
+
+class Database(File):
+    def _init_(Data, objects):
+        super()._init_(Data)
+        self.objects = objects
+
+    def SaveCourseInfile(self):
+        self.Data.carry_files(self.objects)
+
+    def SaveCourseInDB(self, new_objects):
+        self.objects += new_objects
